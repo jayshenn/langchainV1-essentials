@@ -1,123 +1,124 @@
-# 🔗 LangChain Essentials Python
+# 🔗 LangChain 基础教程 Python 版
 
 
-## 🚀 Setup 
+## 🚀 设置
 
-### Prerequisites
+### 前置要求
 
-- Ensure you're using Python 3.11 - 3.13.
-- [uv](https://docs.astral.sh/uv/) package manager or [pip](https://pypi.org/project/pip/)
-- OpenAI API key
-- Node.js and npx (required for MCP server in notebook 3):
+- 确保使用 Python 3.11 - 3.13 版本
+- [uv](https://docs.astral.sh/uv/) 包管理器或 [pip](https://pypi.org/project/pip/)
+- OpenAI API 密钥
+- Node.js 和 npx（第 3 课笔记本中的 MCP 服务器需要）：
 ```bash
-# Install Node.js (includes npx)
-# On macOS with Homebrew:
+# 安装 Node.js（包含 npx）
+# 在 macOS 上使用 Homebrew：
 brew install node
 
-# On Ubuntu/Debian:
+# 在 Ubuntu/Debian 上：
 curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
 sudo apt-get install -y nodejs
 
-# Verify installation:
+# 验证安装：
 node --version
 npx --version
 ```
 
-### Installation
+### 安装步骤
 
-Download the course repository
+下载课程仓库
 
 ```bash
-# Clone the repo, cd to 'python' directory
+# 克隆仓库，进入 'python' 目录
 git clone https://github.com/langchain-ai/lca-langchainV1-essentials.git
 cd ./lca-langchainV1-essentials/python
 ```
 
-Make a copy of example.env
+复制 example.env 文件
 
 ```bash
-# Create .env file
+# 创建 .env 文件
 cp example.env .env
 ```
 
-Insert API keys directly into .env file, OpenAI (required) and [LangSmith](#getting-started-with-langsmith) (optional)
+直接在 .env 文件中插入 API 密钥，OpenAI（必需）和 [LangSmith](#langsmith-入门)（可选）
 
 ```bash
-# Add OpenAI API key
-OPENAI_API_KEY=your_openai_api_key_here
-# The course is written with OpenAI models, but you can choose others if you prefer. 
-# Be sure to add the key and modify the code to call your preferred model
-#ANTHROPIC_API_KEY=your_anthropic_api_key_here_if_you_prefer
+# 添加 OpenAI API 密钥
+OPENAI_API_KEY=你的_openai_api_密钥
+# 本课程使用 OpenAI 模型编写，但你也可以选择其他模型。
+# 确保添加相应密钥并修改代码以调用你偏好的模型
+#ANTHROPIC_API_KEY=你的_anthropic_api_密钥_如果你偏好使用
 
-# Optional API key for LangSmith tracing
-LANGSMITH_API_KEY=your_langsmith_api_key_here
+# LangSmith 追踪的可选 API 密钥
+LANGSMITH_API_KEY=你的_langsmith_api_密钥
 LANGSMITH_TRACING=true
 LANGSMITH_PROJECT=langgraph-py-essentials
-# If you are on the EU instance:
+# 如果你使用欧盟实例：
 LANGSMITH_ENDPOINT=https://eu.api.smith.langchain.com
 
 ```
 
-Make a virtual environment and install dependancies
+创建虚拟环境并安装依赖
 ```bash
-# Create virtual environment and install dependancies
+# 创建虚拟环境并安装依赖
 uv sync
 ```
 
-Run notebooks
+运行笔记本
 
 ```bash
-# Run Jupyter notebooks directly with uv
+# 直接使用 uv 运行 Jupyter 笔记本
 uv run jupyter lab
 
-# Or activate the virtual environment if preferred
-source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+# 或者如果你偏好激活虚拟环境
+source .venv/bin/activate  # Windows 上使用: .venv\Scripts\activate
 jupyter lab
 ```
 
-Optional: Setup [LangSmith Studio](https://docs.langchain.com/oss/python/langchain/studio)
+可选：设置 [LangSmith Studio](https://docs.langchain.com/oss/python/langchain/studio)
 
 ```bash
-# copy the .env file you created above to the studio directory
+# 将上面创建的 .env 文件复制到 studio 目录
 cp .env ./studio/.
 
-#to run
+# 运行
 langgraph dev
 ```
 
-### Getting Started with LangSmith
+### LangSmith 入门
 
-- Create a [LangSmith](https://smith.langchain.com/) account
-- Create a LangSmith API key
-<img width="600" alt="Screenshot 2025-10-16 at 8 28 03 AM" src="https://github.com/user-attachments/assets/e39b8364-c3e3-4c75-a287-d9d4685caad5" />
-<img width="600" alt="Screenshot 2025-10-16 at 8 29 57 AM" src="https://github.com/user-attachments/assets/2e916b2d-e3b0-4c59-a178-c5818604b8fe" />
+- 创建一个 [LangSmith](https://smith.langchain.com/) 账户
+- 创建一个 LangSmith API 密钥
+<img width="600" alt="Screenshot 2025-10-16 at 8 28 03 AM" src="https://github.com/user-attachments/assets/e39b8364-c3e3-4c75-a287-d9d4685caad5" />
+<img width="600" alt="Screenshot 2025-10-16 at 8 29 57 AM" src="https://github.com/user-attachments/assets/2e916b2d-e3b0-4c59-a178-c5818604b8fe" />
 
-# 📚 Lessons
-This repository contains nine short notebooks that serve as brief introductions to many of the most-used features in LangChain, starting with the new **Create Agent**.
+# 📚 课程
 
----
-
-### `L1_fast_agent.ipynb` - 🤖 Create Agent 🤖
-- In this notebook, you will use LangChain’s `create_agent` to build an SQL agent in just a few lines of code.  
-- It demonstrates how quick and easy it is to build a powerful agent. You can easily take this agent and apply it to your own project. 
-- You will also use **LangSmith Studio**, a handy visual debugger to run, host, and explore agents.
+本仓库包含九个简短的笔记本，作为 LangChain 中最常用功能的简要介绍，从新的 **Create Agent** 开始。
 
 ---
 
-### `L2-7.ipynb` - 🧱 Building Blocks 🧱
-In Lessons 2–7, you will learn how to use some of the fundamental building blocks in LangChain. These lessons explain and complement `create_agent`, and you’ll find them useful when creating your own agents. Each lesson is concise and focused.
-
-- **L2_messages.ipynb**: Learn how messages convey information between agent components.  
-- **L3_streaming.ipynb**: Learn how to reduce user-perceived latency using streaming.  
-- **L4_tools.ipynb**: Learn basic tool use to enhance your model with custom or prebuilt tools.  
-- **L5_tools_with_mcp.ipynb**: Learn to use the LangChain MCP adapter to access the world of MCP tools.  
-- **L6_memory.ipynb**: Learn how to give your agent the ability to maintain state between invocations.  
-- **L7_structuredOutput.ipynb**: Learn how to produce structured output from your agent.  
+### `L1_fast_agent.ipynb` - 🤖 创建智能体 🤖
+- 在本笔记本中，你将使用 LangChain 的 `create_agent` 仅用几行代码构建一个 SQL 智能体。
+- 它演示了构建强大智能体是多么快速和简单。你可以轻松地将此智能体应用到自己的项目中。
+- 你还将使用 **LangSmith Studio**，这是一个方便的可视化调试器，用于运行、托管和探索智能体。
 
 ---
 
-### `L8-9.ipynb` - 🪛 Customize Your Agent 🤖
-Lessons 2–7 covered out-of-the-box features. However, `create_agent` also supports both prebuilt and user-defined customization through **Middleware**. This section describes middleware and includes two lessons highlighting specific use cases.
+### `L2-7.ipynb` - 🧱 构建模块 🧱
+在第 2-7 课中，你将学习如何使用 LangChain 中的一些基本构建模块。这些课程解释并补充了 `create_agent`，在创建自己的智能体时会很有用。每节课都简洁而专注。
 
-- **L8_dynamic.ipynb**: Learn how to dynamically modify the agent’s system prompt to react to changing contexts.  
-- **L9_HITL.ipynb**: Learn how to use Interrupts to enable Human-in-the-Loop interactions.
+- **L2_messages.ipynb**：学习消息如何在智能体组件之间传递信息。
+- **L3_streaming.ipynb**：学习如何使用流式传输减少用户感知延迟。
+- **L4_tools.ipynb**：学习基本工具使用，通过自定义或预构建工具增强你的模型。
+- **L5_tools_with_mcp.ipynb**：学习使用 LangChain MCP 适配器访问 MCP 工具世界。
+- **L6_memory.ipynb**：学习如何赋予智能体在调用之间保持状态的能力。
+- **L7_structuredOutput.ipynb**：学习如何从智能体产生结构化输出。
+
+---
+
+### `L8-9.ipynb` - 🪛 自定义你的智能体 🤖
+第 2-7 课涵盖了开箱即用的功能。然而，`create_agent` 也支持通过 **中间件** 进行预构建和用户定义的自定义。本部分描述中间件，并包含两节课，重点介绍特定用例。
+
+- **L8_dynamic.ipynb**：学习如何动态修改智能体的系统提示以响应变化的上下文。
+- **L9_HITL.ipynb**：学习如何使用中断来启用人在环路（Human-in-the-Loop）交互。
